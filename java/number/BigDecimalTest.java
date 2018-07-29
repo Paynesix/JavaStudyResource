@@ -41,4 +41,16 @@ public class BigDecimalTest {
 		DecimalFormat fmt = new DecimalFormat("0" + format);
 		return fmt.format(dec);
 	}
+	
+	/**
+     * 将数据转变为给定精度的数字
+     * @param x
+     * @param scale
+     * @return
+     */
+    public static double round(double x, int scale) {       
+        BigDecimal a = new BigDecimal(String.valueOf(x));
+        a = a.divide(new BigDecimal("1"), scale, BigDecimal.ROUND_HALF_UP);       
+        return a.doubleValue();
+    }
 }

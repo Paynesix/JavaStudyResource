@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %p - %m%n"/>
+        </layout>
+    </appender>
+     <appender name="logToAccountFile" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="D:/ebills6log/acct/AcctInterface.errors"/>
+        <param name="DatePattern" value="&apos;.&apos;yyyy-MM-dd&apos;.log&apos;"/>
+        <layout class="org.apache.log4j.PatternLayout">
+		     <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] - %m%n"/> 
+		</layout>
+    </appender>
+	<logger name="com.bank.account" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="logToAccountFile"/>
+    </logger>
+    <logger name="com.bank.account.parse.ParseMsgBody" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="logToAccountFile"/>
+    </logger>
+    
+    
+    
+    <root>
+        <level value="warn"/>
+        <appender-ref ref="stdout"/>
+    </root>
+</log4j:configuration>
