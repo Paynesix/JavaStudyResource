@@ -1,4 +1,4 @@
-package com.gjjs.Commons.FTPUtilTools;
+package stu.socket;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,9 +13,6 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPConnectionClosedException;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
-
-import com.ebills.util.EbillsCfg;
-import com.gjjs.Commons.utils.ApplicationException;
 
 
 public class FtpFiles {
@@ -64,6 +61,10 @@ public class FtpFiles {
 		return EbillsCfg.getProperty(value);
 	}
     
+	/**
+	 * 构造函数
+	 * @throws Exception
+	 */
 	public FtpFiles() throws Exception{
 		this.RECIVE_FILE_EXT = getvalue("ftp.RECIVE_FILE_EXT");
 		this.SEND_FILE_EXT = getvalue("ftp.SEND_FILE_EXT");
@@ -73,11 +74,16 @@ public class FtpFiles {
 		this.remotRecPath=getvalue("ftp.remotRecPath");
 		this.remotSendPath=getvalue("ftp.remotSendPath");
 		if (RECIVE_FILE_EXT == null || RECIVE_FILE_EXT.trim().length() < 1)
-			throw new ApplicationException("收报扩展文件名为空");
+			throw new Exception("收报扩展文件名为空");
 		if (SEND_FILE_EXT == null || SEND_FILE_EXT.trim().length() < 1)
-			throw new ApplicationException("发报扩展文件名为空");
+			throw new Exception("发报扩展文件名为空");
 	}
 	
+	/**
+	 * 连接ftp
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean connectFTP() throws Exception {
 		int reply;
 		try {
