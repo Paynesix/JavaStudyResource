@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+  <usa>
+    <name>张三</name>
+    <pass>张三的密码</pass>
+  </usa>
+  <usa>
+    <name>里斯</name>
+    <pass>里斯的密码</pass>
+  </usa>
+</user>
